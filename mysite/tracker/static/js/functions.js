@@ -2,22 +2,23 @@
 //    console.log(event.target)
 // })
 
-// function printMousePos(event) {
-//   console.log =("clientX: " + event.clientX + " - clientY: " + event.clientY);
-// }
-//
-// document.addEventListener("click", printMousePos(event));
 
-// var Tracker = {};
-//
-// Tracker.start = (function () {
-//
-// })();
-//
-//
-//
-// document.addEventListener('click', function(event) {
-//    console.log("x:" + event.clientX + " y:" + event.clientY )
-// });
 
-alert("hi");
+
+var Tracker = {};
+
+Tracker.start = (function () {
+
+})();
+//
+
+
+document.addEventListener('click', function(event) {
+   console.log("x:" + event.clientX + " y:" + event.clientY )
+});
+
+
+
+TimeMe.callAfterTimeElapsedInSeconds(15, function(){
+    console.log("The user has been using the page for 15 seconds! Let's prompt them with something.");
+});
