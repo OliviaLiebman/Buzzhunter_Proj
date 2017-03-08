@@ -1,6 +1,13 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from .models import itc_user_interaction
+from .serializers import user_interactionSerializer
+from rest_framework import viewsets
 
+
+class user_interactionViewSet(viewsets.ModelViewSet):
+    queryset = itc_user_interaction.objects.all()
+    serializer_class = user_interactionSerializer
 
 def index(request):
     return render(request,'index.html')
