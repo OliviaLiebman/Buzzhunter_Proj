@@ -7,7 +7,8 @@ router = routers.DefaultRouter()
 router.register(r'api', user_interactionViewSet)
 
 urlpatterns = [
-    url(r'^api', include(router.urls)),
+    url(r'^api$', include(router.urls)),
+    url(r'^api/index$', views.ApiIndexView.as_view()),
     url(r'^$', views.website, name='website'),
     url(r'^$', views.portfolio, name='portfolio'),
     url(r'^$', views.index, name='index'),
