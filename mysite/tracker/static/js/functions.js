@@ -16,18 +16,16 @@ document.addEventListener('click', function(event) {
     console.log(str);
 
     if(event.target instanceof SVGElement) {
-
-    var s = new XMLSerializer();
-    var d = document;
-    var str = s.serializeToString(d);
-
-    var data = new FormData();
-    data.append('user_id',  1);
-    data.append('current_page', '3');
-    data.append('buttons_clicked', str);
-    data.append('page_visited', '3');
-    data.append('coordinates', event.clientX + ' y: ' + event.clientY);
-    data.append('overall_time', '2:00');
+        var s = new XMLSerializer();
+        var d = document;
+        var str = s.serializeToString(d);
+        var data = new FormData();
+        data.append('user_id',  1);
+        data.append('current_page', '3');
+        data.append('buttons_clicked', str);
+        data.append('page_visited', '3');
+        data.append('coordinates', event.clientX + ' y: ' + event.clientY);
+        data.append('overall_time', '2:00');
     }
     else {
         var data = new FormData();
@@ -37,7 +35,6 @@ document.addEventListener('click', function(event) {
         data.append('page_visited', '3');
         data.append('coordinates', event.clientX + ' y: ' + event.clientY);
         data.append('overall_time', '2:00');
-
     }
 
 
