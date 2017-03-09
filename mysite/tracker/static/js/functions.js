@@ -1,6 +1,3 @@
-// document.addEventListener('click', function(event) {
-//    console.log(event.target)
-// })
 
 
 // var Tracker = {};
@@ -27,6 +24,7 @@ document.addEventListener('click', function(event) {
         data.append('coordinates', event.clientX + ' y: ' + event.clientY);
         data.append('overall_time', '2:00');
     }
+
     else {
         var data = new FormData();
         data.append('user_id',  1);
@@ -36,7 +34,6 @@ document.addEventListener('click', function(event) {
         data.append('coordinates', event.clientX + ' y: ' + event.clientY);
         data.append('overall_time', '2:00');
     }
-
 
 
     fetch("/tracker/api/index", {
