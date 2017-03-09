@@ -12,11 +12,11 @@
 
 document.addEventListener('click', function(event) {
    console.log("x:" + event.clientX + " y:" + event.clientY );
-
+    console.log(event.target.innerHTML)
     var data = new FormData();
     data.append('user_id',  1);
     data.append('current_page', '3');
-    data.append('buttons_clicked', 'button');
+    data.append('buttons_clicked', event.target.innerHTML);
     data.append('page_visited', '3');
     data.append('coordinates', event.clientX + ' y: ' + event.clientY);
     data.append('overall_time', '2:00');
@@ -36,12 +36,6 @@ document.addEventListener('click', function(event) {
 
 
 
-document.addEventListener('click', function(event) {
-
-   console.log(event.target)
-
-   console.log("x:" + event.clientX + " y:" + event.clientY )
-});
 
 
 
