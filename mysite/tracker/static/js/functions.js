@@ -5,10 +5,10 @@
 // Tracker.start = (function () {
 //
 // })();
-var url='127.0.0.1:8500';
+var url='127.0.0.1:8500';//change the port to whichever port is being used for runserver, default is 8000
 
-document.addEventListener('click', function(event) {
-   console.log("x:" + event.clientX + " y:" + event.clientY );
+document.addEventListener('click', function(event) { //add a click event listener on the whole doc
+   console.log("x:" + event.clientX + " y:" + event.clientY );//returns x- and y-pos
    // console.log(event.target.innerHTML);
    // console.log(str);
 
