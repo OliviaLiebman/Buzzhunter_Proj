@@ -1,6 +1,6 @@
 from django.http import HttpResponse
-from .models import itc_user_interaction
-from .serializers import user_interactionSerializer
+from .models import itc_user_interaction, page_interaction
+from .serializers import user_interactionSerializer, page_interactionSerializer
 from rest_framework import viewsets
 from django.views.generic.edit import UpdateView
 from django.shortcuts import render
@@ -10,7 +10,7 @@ from rest_framework.views import APIView
 from rest_framework import status
 
 
-class ApiIndexView(APIView):
+class ApiIndexView1(APIView):
     permission_classes = (permissions.AllowAny,)
 
     def post(self, request, format=None):
@@ -28,6 +28,28 @@ class ApiIndexView(APIView):
 class user_interactionViewSet(viewsets.ModelViewSet):
     queryset = itc_user_interaction.objects.all()
     serializer_class = user_interactionSerializer
+
+
+class ApiIndexView2(APIView):
+    permission_classes = (permissions.AllowAny,)
+
+    def post(self, request, format=None):
+        serializer = page_interactionSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def get(self, request, format=None):
+        itc_tables = page_interaction.objects.all()
+        serializer = page_interactionSerializer(itc_tables, many=True)
+        return Response(serializer.data)
+
+
+class page_interactionViewSet(viewsets.ModelViewSet):
+    queryset = page_interaction.objects.all()
+    serializer_class = page_interactionSerializer
+
 
 def index(request):
     return render(request,'index.html')

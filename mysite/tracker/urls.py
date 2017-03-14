@@ -1,13 +1,19 @@
 from django.conf.urls import url, include
 from rest_framework import routers
-from .views import user_interactionViewSet
+from .views import user_interactionViewSet, page_interactionViewSet
+
+
+# from .views import page_interactionViewSet
 from . import views
 
 router = routers.DefaultRouter()
-router.register(r'api', user_interactionViewSet)
+router.register(r'api/table1', user_interactionViewSet)
+router.register(r'api/table2', page_interactionViewSet)
 
 urlpatterns = [
-    url(r'^api/index/', views.ApiIndexView.as_view()),
+    url(r'^api/index/1', views.ApiIndexView1.as_view()),
+    url(r'^api/index/2', views.ApiIndexView2.as_view()),
+
     url(r'^api/', include(router.urls)),
    # url(r'^api$', include(router.urls)), changed to above line
     url(r'^website/', views.website, name='website'),
