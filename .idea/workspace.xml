@@ -3,12 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9a7f321f-091f-4712-bda7-f6f8e25c8e1e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mysite/tracker/admin.py" afterPath="$PROJECT_DIR$/mysite/tracker/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mysite/tracker/models.py" afterPath="$PROJECT_DIR$/mysite/tracker/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mysite/tracker/serializers.py" afterPath="$PROJECT_DIR$/mysite/tracker/serializers.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mysite/tracker/static/js/functions.js" afterPath="$PROJECT_DIR$/mysite/tracker/static/js/functions.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mysite/tracker/urls.py" afterPath="$PROJECT_DIR$/mysite/tracker/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mysite/tracker/views.py" afterPath="$PROJECT_DIR$/mysite/tracker/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -32,8 +26,8 @@
       <file leaf-file-name="functions.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mysite/tracker/static/js/functions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1679">
-              <caret line="35" column="31" lean-forward="false" selection-start-line="35" selection-start-column="31" selection-end-line="35" selection-end-column="31" />
+            <state relative-caret-position="630">
+              <caret line="163" column="46" lean-forward="true" selection-start-line="163" selection-start-column="46" selection-end-line="163" selection-end-column="46" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -680,7 +674,14 @@
       <option name="project" value="LOCAL" />
       <updated>1489488306614</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="reconnected ajax correctly">
+      <created>1489500155132</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1489500155132</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1105,8 +1106,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mysite/tracker/static/js/functions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1679">
-          <caret line="35" column="31" lean-forward="false" selection-start-line="35" selection-start-column="31" selection-end-line="35" selection-end-column="31" />
+        <state relative-caret-position="630">
+          <caret line="163" column="46" lean-forward="true" selection-start-line="163" selection-start-column="46" selection-end-line="163" selection-end-column="46" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
