@@ -5,7 +5,7 @@ import datetime
 class itc_user_interaction(models.Model):
     user_id = models.IntegerField()
     current_page = models.CharField(max_length=1000)
-    buttons_clicked = models.TextField()
+    buttons_clicked = models.TextField(default=False, blank=True)
     page_visited = models.CharField(max_length=1000)
     coordinates = models.CharField(max_length=25)
     overall_time = models.CharField(max_length=50)

@@ -10,12 +10,6 @@ from rest_framework.views import APIView
 from rest_framework import status
 
 
-# class ApiIndexView(UpdateView):
-#     permission_classes = (permissions.AllowAny,)
-#
-#     def post(self, request, format=None):
-#         return Response("ok")
-#
 class ApiIndexView(APIView):
     permission_classes = (permissions.AllowAny,)
 

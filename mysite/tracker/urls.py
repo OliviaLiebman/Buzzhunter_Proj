@@ -7,9 +7,9 @@ router = routers.DefaultRouter()
 router.register(r'api', user_interactionViewSet)
 
 urlpatterns = [
+    url(r'^api/index/', views.ApiIndexView.as_view()),
     url(r'^api/', include(router.urls)),
    # url(r'^api$', include(router.urls)), changed to above line
-    url(r'^api/index/', views.ApiIndexView.as_view()),
     url(r'^website/', views.website, name='website'),
     url(r'^portfolio/', views.portfolio, name='portfolio'),
     url(r'^index/', views.index, name='index'),

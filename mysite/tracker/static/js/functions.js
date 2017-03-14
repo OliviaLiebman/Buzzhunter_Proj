@@ -1,33 +1,18 @@
-
-
 // var Tracker = {};
 //
 // Tracker.start = (function () {
 //
 // })();
-var url='127.0.0.1:8500';//change the port to whichever port is being used for runserver, default is 8000
+
+var url='127.0.0.1:8500'; //change the port to whichever port is being used for runserver, default is 8000
 
 document.addEventListener('click', function(event) { //add a click event listener on the whole doc
-   console.log("x:" + event.clientX + " y:" + event.clientY );//returns x- and y-pos
-   // console.log(event.target.innerHTML);
-   // console.log(str);
-
-   if (event.target.id == 'welcome'){
-
-      var a = document.getElementById('menu-item-75').getElementsByTagName('a')[0];  //will get the href of what is attached to this id
-       var link = '127.0.0.1:8500/tracker/portfolio/';
-       // a.href = link;
-       // window.location.href = '127.0.0.1:8500/tracker/portfolio/';
-       console.log(link);
-       console.log(a);
-       alert("buzz clicked with id = " + event.target.id);
-       // window.location.href='127.0.0.1:9000/tracker/portfolio/';
-   }
-
+    console.log("x:" + event.clientX + " y:" + event.clientY );//returns x- and y-pos
     if(event.target instanceof SVGElement) {
         var s = new XMLSerializer();
-        var d = document;
+        var d = event.target;
         var str = s.serializeToString(d);
+        console.log(str);
         var data = new FormData();
         data.append('user_id',  1);
         data.append('current_page', '3');
@@ -36,10 +21,10 @@ document.addEventListener('click', function(event) { //add a click event listene
         data.append('coordinates', event.clientX + ' y: ' + event.clientY);
         data.append('overall_time', '2:00');
     }
-
     else {
+        console.log(event.target.innerHTML);
         var data = new FormData();
-        data.append('user_id',  1);
+        data.append('user_id', 1);
         data.append('current_page', '3');
         data.append('buttons_clicked', event.target.innerHTML);
         data.append('page_visited', '3');
@@ -47,8 +32,7 @@ document.addEventListener('click', function(event) { //add a click event listene
         data.append('overall_time', '2:00');
     }
 
-
-    fetch("/tracker/api/index", {
+    fetch("/tracker/api/index/", {
         method: "POST",
         body: data
     })
@@ -57,16 +41,23 @@ document.addEventListener('click', function(event) { //add a click event listene
     })
     .then(function(data){
         // alert(JSON.stringify(data))
-    })
+    });
 
-});
+    if (event.target.id == 'welcome'){
+        var a = document.getElementById('menu-item-75').getElementsByTagName('a')[0];  //will get the href of what is attached to this id
+        var link = '127.0.0.1:8500/tracker/portfolio/';
+        // a.href = link;
+        // window.location.href = '127.0.0.1:8500/tracker/portfolio/';
+        console.log(link);
+        console.log(a);
+        alert("buzz clicked with id = " + event.target.id);
+        // window.location.href='127.0.0.1:9000/tracker/portfolio/';
+   }
 
 
-
-TimeMe.callAfterTimeElapsedInSeconds(1, function(){
+    TimeMe.callAfterTimeElapsedInSeconds(1, function(){
     console.log("The user has been using the page for 1 second. Let's prompt them with something.");
-
-});
+    });
 
 
 function setCookie(cname, cvalue, exdays) {
@@ -110,3 +101,6 @@ function setCookie(cname, cvalue, exdays) {
         }
     }
 })();
+
+});
+
