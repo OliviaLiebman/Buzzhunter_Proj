@@ -1,13 +1,22 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Dashboard</title>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+{#    <script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>#}
+{#    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">#}
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.css"/>
 
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
+    {% csrf_token %}
+    {% load staticfiles %}
+    <script src="{% static 'js/dashboard.js' %}" ></script>
+
+</head>
+<body>
 
     <table id="example" class="display" cellspacing="0" width="100%">
         <thead>
@@ -15,13 +24,14 @@
                 <th>User ID</th>
                 <th>Current Page</th>
                 <th>Buttons Clicked</th>
-                <th>Pages Visited</th>
+               <th>Pages Visited</th>
                 <th>Coordinates</th>
                 <th>Overall Time</th>
                 <th>Date/Time of Access</th>
+{#                <th>ID</th>#}
             </tr>
         </thead>
-        <tfoot>
+       {% comment %} <tfoot>
             <tr>
                 <th>User ID</th>
                 <th>Current Page</th>
@@ -30,11 +40,11 @@
                 <th>Coordinates</th>
                 <th>Overall Time</th>
                 <th>Date/Time of Access</th>
+                <th>ID</th>
+
             </tr>
-        </tfoot>
+        </tfoot>{% endcomment %}
     </table>
-</head>
-<body>
 
 </body>
 </html>

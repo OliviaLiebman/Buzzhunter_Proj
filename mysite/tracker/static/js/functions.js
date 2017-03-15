@@ -1,14 +1,13 @@
 
-
 // var Tracker = {};
 //
 // Tracker.start = (function () {
 //
 // })();
-var url='127.0.0.1:8500';//change the port to whichever port is being used for runserver, default is 8000
+var url='127.0.0.1:8500';
 
-document.addEventListener('click', function(event) { //add a click event listener on the whole doc
-   console.log("x:" + event.clientX + " y:" + event.clientY );//returns x- and y-pos
+document.addEventListener('click', function(event) {
+   console.log("x:" + event.clientX + " y:" + event.clientY );
    // console.log(event.target.innerHTML);
    // console.log(str);
 
@@ -90,7 +89,7 @@ function setCookie(cname, cvalue, exdays) {
     var ca = document.cookie.split(';'); //list of key-value pairs of cookies
     for(var i = 0; i < ca.length; i++) { //loops through length of list
         var c = ca[i];
-        while (c.charAt(0) == ' ') { //gets rid of leading white spcae
+        while (c.charAt(0) == ' ') { //gets rid of leading white space
             c = c.substring(1);
         }
         if (c.indexOf(name) == 0) {
