@@ -33,8 +33,7 @@ function setCookie(cname, cvalue, exdays) {
 
     setCookie('buzz_cookie', json.ip, 365);
     console.log("inside cookie:" + json.ip);
-    user_interaction_table(json.ip)
-
+    tableOneData(json.ip);
   }
 
     function getCookie(cname) {//pass in key
@@ -63,16 +62,16 @@ function setCookie(cname, cvalue, exdays) {
 //     }
 // })();
 
-    function user_interaction_table(user_id) {
+    function tableOneData(ipaddress) {
+    console.log('ip:' + ipaddress);
         var data = new FormData();
-        data.append('user_id', user_id);
-        data.append('overall_time', '4:00');
-
-        // data.append('session_id', '5.40');
+        data.append("user_id", ipaddress);
+        data.append("overall_time", "4:00");
+        data.append('session_id', 5);
 
 
         fetch("/tracker/api/index/1", {
-            method: "POST",
+            method: "post",
             body: data
         })
             .then(function (res) {
@@ -82,14 +81,42 @@ function setCookie(cname, cvalue, exdays) {
                 // alert(JSON.stringify(data))
             })
     }
-
-
-
 document.addEventListener('click', function(event) { //add a click event listener on the whole doc
 
-
     console.log("x:" + event.clientX + " y:" + event.clientY );//returns x- and y-pos
-    // if(event.target instanceof SVGElement) {
+
+    if(event.target instanceof SVGElement) {
+        var s = new XMLSerializer();
+        var d = event.target;
+        var str = s.serializeToString(d);
+        var data = new FormData();
+        data.append('user_id',  1);
+        data.append('current_page', '3');
+        data.append('buttons_clicked', str);
+        data.append('coordinates', event.clientX + ' y: ' + event.clientY);
+        // data.append('session_id', '5.40');
+    }
+    else {
+        var data = new FormData();
+        data.append('user_id',  1);
+        data.append('current_page', '3');
+        data.append('buttons_clicked', event.target.innerHTML);
+        data.append('coordinates', event.clientX + ' y: ' + event.clientY);
+        // data.append('session_id', '5.40');
+
+    }
+    fetch("/tracker/api/index/2", {
+        method: "POST",
+        body: data
+    })
+    .then(function(res){
+        return res.json();
+    })
+    .then(function(data){
+        // alert(JSON.stringify(data))
+    });
+
+// if(event.target instanceof SVGElement) {
     //     var s = new XMLSerializer();
     //     var d = event.target;
     //     var str = s.serializeToString(d);
@@ -115,40 +142,7 @@ document.addEventListener('click', function(event) { //add a click event listene
     //     // data.append('session_id', '5.40');
     //
     // }
- if(event.target instanceof SVGElement) {
-        var s = new XMLSerializer();
-        var d = event.target;
-        var str = s.serializeToString(d);
-        console.log(str);
-        var data = new FormData();
-        data.append('user_id',  1);
-        data.append('current_page', '3');
-        data.append('buttons_clicked', str);
-        data.append('coordinates', event.clientX + ' y: ' + event.clientY);
-        // data.append('session_id', '5.40');
-    }
-    else {
-        console.log(event.target.innerHTML);
-        var data = new FormData();
-        data.append('user_id',  1);
-        data.append('current_page', '3');
-        data.append('buttons_clicked', str);
-        data.append('coordinates', event.clientX + ' y: ' + event.clientY);
-        // data.append('session_id', '5.40');
-
-    }
-    fetch("/tracker/api/index/2", {
-        method: "POST",
-        body: data
-    })
-    .then(function(res){
-        return res.json();
-    })
-    .then(function(data){
-        // alert(JSON.stringify(data))
-    })
-
-
+});
 
 
 //     TimeMe.callAfterTimeElapsedInSeconds(1, function(){
@@ -173,6 +167,4 @@ document.addEventListener('click', function(event) { //add a click event listene
 // };
 
 
-
-});
 
