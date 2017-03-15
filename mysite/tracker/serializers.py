@@ -10,7 +10,6 @@ class page_interactionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = page_interaction
-        fields= ('user_id', 'current_page', 'buttons_clicked', 'coordinates')
-        # fields= ('user_id', 'session_id', 'current_page', 'buttons_clicked', 'coordinates')
+        fields= ('user_id', 'session_id', 'current_page', 'buttons_clicked', 'coordinates')
 
 

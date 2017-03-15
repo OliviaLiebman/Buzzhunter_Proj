@@ -2,10 +2,71 @@
 //
 // Tracker.start = (function () {
 //
-// })();
+// // })();
+
+
+
+function GetCookieSession (name) {
+    var arg = name + "=";
+    var alength = arg.length;
+    var clength = document.cookie.length;
+    var i = 0;
+    while (i < clength) {
+        var j = i + alength;
+        if (document.cookie.substring(i, j) == arg)
+            return getCookieVal (j);
+            i = document.cookie.indexOf(" ", i) + 1;
+        if (i == 0) break;
+    }
+    return null;
+}
+function SetCookieSessions (name, value) {
+    var argv = SetCookieSessions.arguments;
+    var argc = SetCookieSessions.arguments.length;
+    var expires = (argc > 2) ? argv[2] : null;
+    var path = (argc > 3) ? argv[3] : null;
+    var domain = (argc > 4) ? argv[4] : null;
+    var secure = (argc > 5) ? argv[5] : false;
+    document.cookie = name + "=" + escape (value) +
+    ((expires == null) ? "" : ("; expires=" + expires.toGMTString())) +
+    ((path == null) ? "" : ("; path=" + path)) +
+    ((domain == null) ? "" : ("; domain=" + domain)) +
+    ((secure == true) ? "; secure" : "");
+}
+
+function DeleteCookie (name) {
+    var exp = new Date();
+    exp.setTime (exp.getTime() - 1);
+    var cval = GetCookieSession (name);
+    document.cookie = name + "=" + cval + "; expires=" + exp.toGMTString();
+}
+
+var expDays = 30;
+var exp = new Date();
+exp.setTime(exp.getTime() + (expDays*24*60*60*1000));
+
+function amt(){
+    var count = GetCookieSession('count')
+    if(count == null) {
+        SetCookieSessions('count','1')
+        return 1
+    }
+    else {
+        var newcount = parseInt(count) + 1;
+        DeleteCookie('count')
+        SetCookieSessions('count',newcount,exp)
+        return count
+    }
+}
+
+function getCookieVal(offset) {
+    var endstr = document.cookie.indexOf (";", offset);
+    if (endstr == -1)
+    endstr = document.cookie.length;
+    return unescape(document.cookie.substring(offset, endstr));
+}
 
 // var url='127.0.0.1:8500'; //change the port to whichever port is being used for runserver, default is 8000
-
 
 // if (event.target.id == 'welcome'){
 //         var a = document.getElementById('menu-item-75').getElementsByTagName('a')[0];  //will get the href of what is attached to this id
@@ -17,10 +78,9 @@
 //         alert("buzz clicked with id = " + event.target.id);
 //         // window.location.href='127.0.0.1:9000/tracker/portfolio/';
 //    }
-
+//
 var timeInSeconds = TimeMe.getTimeOnCurrentPageInSeconds();
-
-
+var user_id = "";
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
@@ -36,6 +96,8 @@ function setCookie(cname, cvalue, exdays) {
     setCookie('buzz_cookie', json.ip, 365);
     console.log("inside cookie:" + json.ip);
     tableOneData(json.ip);
+    user_id = json.ip;
+
   }
 
     function getCookie(cname) {//pass in key
@@ -64,13 +126,14 @@ function setCookie(cname, cvalue, exdays) {
 //     }
 // })();
 
+var session_value = amt();
+
     function tableOneData(ipaddress) {
-    console.log('ip:' + ipaddress);
+
         var data = new FormData();
         data.append("user_id", ipaddress);
         data.append("overall_time", TimeMe.getTimeOnCurrentPageInSeconds()+'s');
-        data.append('session_id', 5);
-
+        data.append('session_id', session_value);
 
         fetch("/tracker/api/index/1", {
             method: "post",
@@ -83,8 +146,9 @@ function setCookie(cname, cvalue, exdays) {
                 // alert(JSON.stringify(data))
             })
     }
-document.addEventListener('click', function(event) { //add a click event listener on the whole doc
 
+document.addEventListener('click', function(event) { //add a click event listener on the whole doc
+    var sPath = window.location.pathname;
     console.log("x:" + event.clientX + " y:" + event.clientY );//returns x- and y-pos
 
     if(event.target instanceof SVGElement) {
@@ -92,19 +156,19 @@ document.addEventListener('click', function(event) { //add a click event listene
         var d = event.target;
         var str = s.serializeToString(d);
         var data = new FormData();
-        data.append('user_id',  1);
-        data.append('current_page', '3');
+        data.append('user_id',  user_id);
+        data.append('current_page', sPath);
         data.append('buttons_clicked', str);
         data.append('coordinates', event.clientX + ' y: ' + event.clientY);
-        // data.append('session_id', '5.40');
+        data.append('session_id', session_value);
     }
     else {
         var data = new FormData();
-        data.append('user_id',  1);
-        data.append('current_page', '3');
+        data.append('user_id',  user_id);
+        data.append('current_page', sPath);
         data.append('buttons_clicked', event.target.innerHTML);
         data.append('coordinates', event.clientX + ' y: ' + event.clientY);
-        // data.append('session_id', '5.40');
+        data.append('session_id', session_value);
 
     }
     fetch("/tracker/api/index/2", {
@@ -118,32 +182,6 @@ document.addEventListener('click', function(event) { //add a click event listene
         // alert(JSON.stringify(data))
     });
 
-// if(event.target instanceof SVGElement) {
-    //     var s = new XMLSerializer();
-    //     var d = event.target;
-    //     var str = s.serializeToString(d);
-    //     console.log(str);
-    //     var data = new FormData();
-    //     data.append('user_id',  1);
-    //     data.append('current_page', '3');
-    //     data.append('buttons_clicked', str);
-    //     data.append('page_visited', '3');
-    //     data.append('coordinates', event.clientX + ' y: ' + event.clientY);
-    //     data.append('overall_time', '2:00');
-    //     // data.append('session_id', '5.40');
-    // }
-    // else {
-    //     console.log(event.target.innerHTML);
-    //     var data = new FormData();
-    //     data.append('user_id', 1);
-    //     data.append('current_page', '3');
-    //     data.append('buttons_clicked', event.target.innerHTML);
-    //     data.append('page_visited', '3');
-    //     data.append('coordinates', event.clientX + ' y: ' + event.clientY);
-    //     data.append('overall_time', '2:00');
-    //     // data.append('session_id', '5.40');
-    //
-    // }
 });
 
 
