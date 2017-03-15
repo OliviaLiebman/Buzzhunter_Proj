@@ -5,6 +5,7 @@
 // // })();
 
 window.onunload = tableOneData;
+var user_id = "";
 
 
 function GetCookieSession (name) {
@@ -81,8 +82,6 @@ function getCookieVal(offset) {
 //         // window.location.href='127.0.0.1:9000/tracker/portfolio/';
 //    }
 //
-var timeInSeconds = TimeMe.getTimeOnCurrentPageInSeconds();
-var user_id = "";
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
@@ -131,7 +130,7 @@ function setCookie(cname, cvalue, exdays) {
 
 var session_value = amt();
 
-    function tableOneData() {
+function tableOneData() {
 
         var data = new FormData();
         data.append("user_id", user_id);
@@ -174,6 +173,7 @@ document.addEventListener('click', function(event) { //add a click event listene
         data.append('session_id', session_value);
 
     }
+
     fetch("/tracker/api/index/2", {
         method: "POST",
         body: data
