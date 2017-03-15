@@ -4,6 +4,7 @@
 //
 // // })();
 
+window.onunload = tableOneData;
 
 
 function GetCookieSession (name) {
@@ -20,6 +21,7 @@ function GetCookieSession (name) {
     }
     return null;
 }
+
 function SetCookieSessions (name, value) {
     var argv = SetCookieSessions.arguments;
     var argc = SetCookieSessions.arguments.length;
@@ -95,10 +97,11 @@ function setCookie(cname, cvalue, exdays) {
 
     setCookie('buzz_cookie', json.ip, 365);
     console.log("inside cookie:" + json.ip);
-    tableOneData(json.ip);
     user_id = json.ip;
 
   }
+
+
 
     function getCookie(cname) {//pass in key
         var name = cname + "=";
@@ -128,10 +131,10 @@ function setCookie(cname, cvalue, exdays) {
 
 var session_value = amt();
 
-    function tableOneData(ipaddress) {
+    function tableOneData() {
 
         var data = new FormData();
-        data.append("user_id", ipaddress);
+        data.append("user_id", user_id);
         data.append("overall_time", TimeMe.getTimeOnCurrentPageInSeconds()+'s');
         data.append('session_id', session_value);
 
