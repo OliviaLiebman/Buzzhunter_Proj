@@ -18,6 +18,8 @@
 //         // window.location.href='127.0.0.1:9000/tracker/portfolio/';
 //    }
 
+var timeInSeconds = TimeMe.getTimeOnCurrentPageInSeconds();
+
 
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
@@ -66,7 +68,7 @@ function setCookie(cname, cvalue, exdays) {
     console.log('ip:' + ipaddress);
         var data = new FormData();
         data.append("user_id", ipaddress);
-        data.append("overall_time", "4:00");
+        data.append("overall_time", TimeMe.getTimeOnCurrentPageInSeconds()+'s');
         data.append('session_id', 5);
 
 
