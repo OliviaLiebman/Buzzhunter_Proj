@@ -1,40 +1,67 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Dashboard</title>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.css"/>
 
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
+</head>
+<body>
 
-    <table id="example" class="display" cellspacing="0" width="100%">
+    <table id="user-interaction-table" class="display" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <th>User ID</th>
-                <th>Current Page</th>
-                <th>Buttons Clicked</th>
-                <th>Pages Visited</th>
-                <th>Coordinates</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Session ID</th>
                 <th>Overall Time</th>
-                <th>Date/Time of Access</th>
+                <th>Date and Time Accessed</th>
             </tr>
         </thead>
-        <tfoot>
+      <tfoot>
             <tr>
                 <th>User ID</th>
-                <th>Current Page</th>
-                <th>Buttons Clicked</th>
-                <th>Pages Visited</th>
-                <th>Coordinates</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Session ID</th>
                 <th>Overall Time</th>
-                <th>Date/Time of Access</th>
+                <th>Date and Time Accessed</th>
             </tr>
         </tfoot>
     </table>
-</head>
-<body>
+
+        <table id="page-interaction-table" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>Session ID</th>
+                <th>Corresponding Page URL</th>
+                <th>Buttons Clicked</th>
+                <th>Coordinates</th>
+            </tr>
+        </thead>
+      <tfoot>
+          <tr>
+                <th>User ID</th>
+                <th>Session ID</th>
+                <th>Corresponding Page URL</th>
+                <th>Buttons Clicked</th>
+                <th>Coordinates</th>
+            </tr>
+        </tfoot>
+    </table>
+
+{#    <script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>#}
+{#    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">#}
+{#<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.js"></script>#}
+    {% csrf_token %}
+    {% load staticfiles %}
+    <script src="{% static 'js/dashboard.js' %}" ></script>
 
 </body>
 </html>
