@@ -56,8 +56,8 @@ function amt(){
     }
     else {
         var newcount = parseInt(count) + 1;
-        DeleteCookie('count')
-        SetCookieSessions('count',newcount,exp)
+        DeleteCookie('count');
+        SetCookieSessions('count',newcount,exp);
         return count
     }
 }
