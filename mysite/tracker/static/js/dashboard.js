@@ -28,7 +28,7 @@ console.log('i am in dashboard js');
     //             { "data": "coordinates" },
     //             { "data": "current_page" },
     //             { "data": "date_time_of_access" },
-    //             // { "data": "id" },
+    //              { "data": "id" },
     //             { "data": "overall_time" },
     //             { "data": "page_visited" },
     //             { "data": "user_id" }
@@ -70,17 +70,17 @@ console.log('i am in dashboard js');
   function createTable(data) {
 
         $('#example').DataTable({
-            data: data,
+            "data": data,
             columns: [
-                { data: "buttons_clicked" },
-                { data: "coordinates" },
-                { data: "current_page" },
-                { data: "date_time_of_access" },
-                { data: "id" },
-                { data: "overall_time" },
-                { data: "page_visited" },
-                { data: "user_id" }
-                ]
+                { "data": "buttons_clicked" },
+                { "data": "coordinates" },
+                { "data": "current_page" },
+                { "data": "date_time_of_access" },
+                { "data": "id" },
+                { "data": "overall_time" },
+                { "data": "page_visited" },
+                { "data": "user_id" }
+                 ]
         });
     }
 
@@ -89,8 +89,7 @@ console.log('i am in dashboard js');
             url: "http://127.0.0.1:8500/tracker/api/index/",
       success: function(datagrabbed) {
           console.log(datagrabbed);
-          var data = datagrabbed;
-          createTable(data);
+          createTable(datagrabbed);
       }});
 
 
