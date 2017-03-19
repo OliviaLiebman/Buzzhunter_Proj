@@ -6,6 +6,10 @@
 
 window.onunload = tableOneData;
 var user_id = "";
+var user_name = "";
+var user_email = "";
+
+// the following section of code is for scrolling data
 
 var output = document.createElement("p");
         document.body.appendChild(output);
@@ -34,6 +38,8 @@ var output = document.createElement("p");
         window.addEventListener("scroll", function(){
             amountscrolled()
         }, false);
+
+/**********************************************************************************************/
 
 function GetCookieSession (name) {
     var arg = name + "=";
@@ -71,11 +77,11 @@ function DeleteCookie (name) {
     document.cookie = name + "=" + cval + "; expires=" + exp.toGMTString();
 }
 
-var expDays = 30;
+var expDays = 30; //cookie is deleted after 30 days
 var exp = new Date();
 exp.setTime(exp.getTime() + (expDays*24*60*60*1000));
 
-function amt(){
+function amt(){ //keeps track of session ID per user
     var count = GetCookieSession('count')
     if(count == null) {
         SetCookieSessions('count','1')
@@ -89,7 +95,7 @@ function amt(){
     }
 }
 
-function getCookieVal(offset) {
+function getCookieVal(offset) { //Rivka: what does this do? Check the value of the cookie? Different from the function getCookie? Returns the entire cookie?
     var endstr = document.cookie.indexOf (";", offset);
     if (endstr == -1)
     endstr = document.cookie.length;
@@ -109,6 +115,11 @@ function getCookieVal(offset) {
 //         // window.location.href='127.0.0.1:9000/tracker/portfolio/';
 //    }
 //
+
+/**********************************************************************************************/
+
+// the following section of code sets, gets, and returns cookie values:
+
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
@@ -121,12 +132,10 @@ function setCookie(cname, cvalue, exdays) {
     console.log("IP address: ", json.ip);
     // document.cookie = (json.ip); "expires=Thu, 18 Dec 2018 12:00:00 UTC";
 
-    setCookie('buzz_cookie', json.ip, 365);
     console.log("inside cookie:" + json.ip);
     user_id = json.ip;
 
   }
-
 
     function getCookie(cname) {//pass in key
         var name = cname + "=";
@@ -140,8 +149,11 @@ function setCookie(cname, cvalue, exdays) {
                 return c.substring(name.length, c.length); //returns the value of the key-value pair
             }
         }
+
     return "";
+
     }
+
 // (function checkCookie() {
 //     var user = getCookie("username");
 //     if (user != "") {
@@ -156,10 +168,14 @@ function setCookie(cname, cvalue, exdays) {
 
 var session_value = amt();
 
+/**********************************************************************************************/
+
 function tableOneData() {
     if (document.body.scrollHeight > document.body.clientHeight) {
         var data = new FormData();
         data.append("user_id", user_id);
+        // data.append("name", user_name);
+        // data.append("email", user_email);
         data.append("overall_time", TimeMe.getTimeOnCurrentPageInSeconds()+'s');
         data.append('session_id', session_value);
         data.append('percentage_scroll', output.innerText);
@@ -167,6 +183,8 @@ function tableOneData() {
     } else {
         var data = new FormData();
         data.append("user_id", user_id);
+        // data.append("name", user_name);
+        // data.append("email", user_email);
         data.append("overall_time", TimeMe.getTimeOnCurrentPageInSeconds() + 's');
         data.append('session_id', session_value);
         data.append('percentage_scroll', "No scroll ability");
@@ -184,10 +202,14 @@ function tableOneData() {
 
 }
 
+/**********************************************************************************************/
+
+
 document.addEventListener('click', function(event) { //add a click event listener on the whole doc
     var sPath = window.location.pathname;
     console.log("x:" + event.clientX + " y:" + event.clientY );//returns x- and y-pos
 
+    // if user clicks one of the SVG (image) elements
     if(event.target instanceof SVGElement) {
         var s = new XMLSerializer();
         var d = event.target;
@@ -200,6 +222,33 @@ document.addEventListener('click', function(event) { //add a click event listene
         data.append('session_id', session_value);
     }
 
+    // gets user's name a and email if they click submit on the form:
+    else if ((event.target.classList[1] === "wpcf7-submit" &&
+        document.getElementsByName('your-name')[0].value != "") &&
+        document.getElementsByName('your-email')[0].value != "") {
+
+            var data = new FormData();
+
+            user_name = document.getElementsByName('your-name')[0].value;
+            user_email = document.getElementsByName('your-email')[0].value;
+
+            data.append("email", user_email);
+            data.append("name", user_name);
+
+            setCookie('buzz_cookie', user_id + " - name: " + user_name + ", email: " + user_email, 365);
+
+            fetch("/tracker/api/index/1", {
+                method: "post",
+                body: data
+            })
+                .then(function (res) {
+                    return res.json();
+                })
+
+
+        }
+
+    // if the user clicks all other elements of the page:
     else {
         var data = new FormData();
         data.append('user_id',  user_id);
@@ -207,7 +256,6 @@ document.addEventListener('click', function(event) { //add a click event listene
         data.append('buttons_clicked', event.target.innerHTML.substr(0, 150));
         data.append('coordinates', 'x: ' + event.clientX + ' y: ' + event.clientY);
         data.append('session_id', session_value);
-
     }
 
     fetch("/tracker/api/index/2", {
@@ -222,6 +270,7 @@ document.addEventListener('click', function(event) { //add a click event listene
     });
 
 });
+
 
 
 //     TimeMe.callAfterTimeElapsedInSeconds(1, function(){

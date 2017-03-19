@@ -9,8 +9,8 @@ console.log('i am in dashboard js');
             "data": data,
             columns: [
                 { "data": "user_id" },
-                // { "data": "user_name" },
-                // { "data": "user_email" },
+                { "data": "user_name" },
+                { "data": "user_email" },
                 { "data": "session_id" },
                 { "data": "overall_time" },
                 { "data": "date_time_of_access" },
@@ -48,13 +48,3 @@ console.log('i am in dashboard js');
           console.log(datagrabbed);
           createPageInteractionTable(datagrabbed);
       }});
-
-
-
-
-
-
-
-
-
-
