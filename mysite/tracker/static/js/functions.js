@@ -205,8 +205,8 @@ document.addEventListener('click', function(event) { //add a click event listene
         var data = new FormData();
         data.append('user_id',  user_id);
         data.append('current_page', sPath);
-        data.append('buttons_clicked', str);
-        data.append('coordinates', event.clientX + ' y: ' + event.clientY);
+        data.append('buttons_clicked', str.substr(5, 150));
+        data.append('coordinates', 'x: ' + event.clientX + ' y: ' + event.clientY);
         data.append('session_id', session_value);
     }
 
@@ -214,8 +214,8 @@ document.addEventListener('click', function(event) { //add a click event listene
         var data = new FormData();
         data.append('user_id',  user_id);
         data.append('current_page', sPath);
-        data.append('buttons_clicked', event.target.innerHTML);
-        data.append('coordinates', event.clientX + ' y: ' + event.clientY);
+        data.append('buttons_clicked', event.target.innerHTML.substr(0, 150));
+        data.append('coordinates', 'x: ' + event.clientX + ' y: ' + event.clientY);
         data.append('session_id', session_value);
 
     }
