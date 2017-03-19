@@ -3,7 +3,6 @@
 // Tracker.start = (function () {
 //
 // // })();
-alert("hi");
 
 window.onunload = tableOneData;
 var user_id = "";

@@ -66,18 +66,6 @@ def creative(request):
 def index_all(request):
     return render(request,'index_all.html')
 
-def index_branding(request):
-    return render(request,'index_branding.html')
-
-def index_buzzLove(request):
-    return render(request,'index_buzzLove.html')
-
-def index_confidential(request):
-    return render(request,'index_confidential.html')
-
-def index_web(request):
-    return render(request,'index_web.html')
-
 def portfolio(request):
     return render(request,'portfolio.html')
 
