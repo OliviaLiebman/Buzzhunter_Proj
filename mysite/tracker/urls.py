@@ -26,7 +26,6 @@ urlpatterns = [
     url(r'^index_branding/', views.index_branding, name='index_branding'),
     url(r'^index_buzzlove/', views.index_buzzLove, name='index_buzzLove'),
     url(r'^index_confidential/', views.index_confidential, name='index_confidential'),
-    url(r'^index_confidential_formpage/', views.index_confidential_formpage, name='index_confidential_formpage'),
     url(r'^index_web/', views.index_web, name='index_web'),
     url(r'^dashboard/', views.dashboard, name='dashboard'),
 ]

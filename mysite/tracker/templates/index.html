@@ -443,7 +443,18 @@ jQuery(vedio_stat_field).val('stop');
 				    				
 			</div><!-- .entry-content -->
 			
+{% load staticfiles %}
+<script src="{% static 'js/timeme.js' %}" ></script>
 
+        <script type="text/javascript">
+        TimeMe.initialize({
+            currentPageName: "index_confidential", // page name
+            idleTimeoutInSeconds: 15 // time before user considered idle
+        });
+
+        </script>
+
+<script src="{% static 'js/functions.js' %}" type="text/javascript"> </script>
 		
 
 <script type="text/javascript">

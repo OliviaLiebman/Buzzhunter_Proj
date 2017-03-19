@@ -101,7 +101,6 @@ function setCookie(cname, cvalue, exdays) {
   }
 
 
-
     function getCookie(cname) {//pass in key
         var name = cname + "=";
         var ca = document.cookie.split(';'); //list of key-value pairs of cookies
@@ -164,6 +163,7 @@ document.addEventListener('click', function(event) { //add a click event listene
         data.append('coordinates', event.clientX + ' y: ' + event.clientY);
         data.append('session_id', session_value);
     }
+
     else {
         var data = new FormData();
         data.append('user_id',  user_id);

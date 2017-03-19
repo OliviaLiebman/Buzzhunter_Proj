@@ -75,9 +75,6 @@ def index_buzzLove(request):
 def index_confidential(request):
     return render(request,'index_confidential.html')
 
-def index_confidential_formpage(request):
-    return render(request,'index_confidential_formpage.html')
-
 def index_web(request):
     return render(request,'index_web.html')
 
