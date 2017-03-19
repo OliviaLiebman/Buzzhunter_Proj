@@ -35,7 +35,6 @@ var output = document.createElement("p");
             amountscrolled()
         }, false);
 
-console.log(output);
 function GetCookieSession (name) {
     var arg = name + "=";
     var alength = arg.length;
@@ -164,22 +163,14 @@ function tableOneData() {
         data.append("overall_time", TimeMe.getTimeOnCurrentPageInSeconds()+'s');
         data.append('session_id', session_value);
         data.append('percentage_scroll', output.innerText);
-        fetch("/tracker/api/index/1", {
-            method: "post",
-            body: data
-        })
-            .then(function (res) {
-                return res.json();
-            })
-            .then(function (data) {
-                // alert(JSON.stringify(data))
-            })
+
     } else {
         var data = new FormData();
         data.append("user_id", user_id);
-        data.append("overall_time", TimeMe.getTimeOnCurrentPageInSeconds()+'s');
+        data.append("overall_time", TimeMe.getTimeOnCurrentPageInSeconds() + 's');
         data.append('session_id', session_value);
         data.append('percentage_scroll', "No scroll ability");
+    }
         fetch("/tracker/api/index/1", {
             method: "post",
             body: data
@@ -191,7 +182,6 @@ function tableOneData() {
                 // alert(JSON.stringify(data))
             })
 
-    }
 }
 
 document.addEventListener('click', function(event) { //add a click event listener on the whole doc

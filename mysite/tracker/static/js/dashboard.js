@@ -9,8 +9,8 @@ console.log('i am in dashboard js');
             "data": data,
             columns: [
                 { "data": "user_id" },
-                { "data": "user_name" },
-                { "data": "user_email" },
+                // { "data": "user_name" },
+                // { "data": "user_email" },
                 { "data": "session_id" },
                 { "data": "overall_time" },
                 { "data": "date_time_of_access" },
@@ -19,9 +19,9 @@ console.log('i am in dashboard js');
         });
     }
 
-     $.ajax({
+         $.ajax({
             type: 'GET',
-            url: "http://127.0.0.1:8500/tracker/api/index/1/",
+            url: "http://127.0.0.1:8000/tracker/api/index/1/",
       success: function(datagrabbed) {
           console.log(datagrabbed);
           createUserInteractionTable(datagrabbed);
@@ -43,7 +43,7 @@ console.log('i am in dashboard js');
 
      $.ajax({
             type: 'GET',
-            url: "http://127.0.0.1:8500/tracker/api/index/2/",
+            url: "http://127.0.0.1:8000/tracker/api/index/2/",
       success: function(datagrabbed) {
           console.log(datagrabbed);
           createPageInteractionTable(datagrabbed);
