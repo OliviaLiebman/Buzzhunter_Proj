@@ -3,11 +3,40 @@
 // Tracker.start = (function () {
 //
 // // })();
+alert("hi");
 
 window.onunload = tableOneData;
 var user_id = "";
 
+var output = document.createElement("p");
+        document.body.appendChild(output);
 
+
+        output.style.display = "none";
+
+        function getDocHeight() {
+            var D = document;
+            return Math.max(
+                    D.body.scrollHeight, D.documentElement.scrollHeight,
+                    D.body.offsetHeight, D.documentElement.offsetHeight,
+                    D.body.clientHeight, D.documentElement.clientHeight
+            )
+        }
+
+        function amountscrolled(){
+            var winheight= window.innerHeight || (document.documentElement || document.body).clientHeight;
+            var docheight = getDocHeight();
+            var scrollTop = window.pageYOffset || (document.documentElement || document.body.parentNode || document.body).scrollTop;
+            var trackLength = docheight - winheight;
+            var pctScrolled = Math.floor(scrollTop/trackLength * 100) // gets percentage scrolled (ie: 80 or NaN if tracklength == 0)
+            output.innerHTML = pctScrolled +'%'
+        }
+
+        window.addEventListener("scroll", function(){
+            amountscrolled()
+        }, false);
+
+console.log(output);
 function GetCookieSession (name) {
     var arg = name + "=";
     var alength = arg.length;
@@ -130,12 +159,12 @@ function setCookie(cname, cvalue, exdays) {
 var session_value = amt();
 
 function tableOneData() {
-
+    if (document.body.scrollHeight > document.body.clientHeight) {
         var data = new FormData();
         data.append("user_id", user_id);
         data.append("overall_time", TimeMe.getTimeOnCurrentPageInSeconds()+'s');
         data.append('session_id', session_value);
-
+        data.append('percentage_scroll', output.innerText);
         fetch("/tracker/api/index/1", {
             method: "post",
             body: data
@@ -146,7 +175,25 @@ function tableOneData() {
             .then(function (data) {
                 // alert(JSON.stringify(data))
             })
+    } else {
+        var data = new FormData();
+        data.append("user_id", user_id);
+        data.append("overall_time", TimeMe.getTimeOnCurrentPageInSeconds()+'s');
+        data.append('session_id', session_value);
+        data.append('percentage_scroll', "No scroll ability");
+        fetch("/tracker/api/index/1", {
+            method: "post",
+            body: data
+        })
+            .then(function (res) {
+                return res.json();
+            })
+            .then(function (data) {
+                // alert(JSON.stringify(data))
+            })
+
     }
+}
 
 document.addEventListener('click', function(event) { //add a click event listener on the whole doc
     var sPath = window.location.pathname;
@@ -208,6 +255,4 @@ document.addEventListener('click', function(event) { //add a click event listene
 //     var timeSpentOnPage = TimeMe.getTimeOnCurrentPageInSeconds();
 //     xmlhttp.send(timeSpentOnPage);
 // };
-
-
 
