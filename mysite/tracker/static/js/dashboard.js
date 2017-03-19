@@ -14,7 +14,8 @@ console.log('i am in dashboard js');
                 { "data": "session_id" },
                 { "data": "overall_time" },
                 { "data": "date_time_of_access" },
-                 ]
+                { "data": "percentage_scroll" }
+            ]
         });
     }
 
