@@ -171,6 +171,7 @@ var session_value = amt();
 /**********************************************************************************************/
 
 function tableOneData() {
+
     if (document.body.scrollHeight > document.body.clientHeight) {
         var data = new FormData();
         data.append("user_id", user_id);
@@ -202,6 +203,35 @@ function tableOneData() {
 
 }
 
+// if user submits the form with both their name and email:
+
+ document.getElementsByClassName('wpcf7-submit')[0].addEventListener('click', function() {
+
+        var data = new FormData();
+
+        if ((document.getElementsByName('your-name')[0].value != "") &&
+        document.getElementsByName('your-email')[0].value != "") {
+
+            console.log ("inside if statement when submit is clicked");
+
+
+            user_name = document.getElementsByName('your-name')[0].value;
+            user_email = document.getElementsByName('your-email')[0].value;
+
+            data.append("user_name", user_email);
+            data.append("user_email", user_name);
+
+
+            fetch("/tracker/api/index/1", {
+                method: "post",
+                body: data
+            })
+                .then(function (res) {
+                    return res.json();
+                })
+        }
+});
+
 /**********************************************************************************************/
 
 
@@ -223,30 +253,30 @@ document.addEventListener('click', function(event) { //add a click event listene
     }
 
     // gets user's name a and email if they click submit on the form:
-    else if ((event.target.classList[1] === "wpcf7-submit" &&
-        document.getElementsByName('your-name')[0].value != "") &&
-        document.getElementsByName('your-email')[0].value != "") {
-
-            var data = new FormData();
-
-            user_name = document.getElementsByName('your-name')[0].value;
-            user_email = document.getElementsByName('your-email')[0].value;
-
-            data.append("email", user_email);
-            data.append("name", user_name);
-
-            setCookie('buzz_cookie', user_id + " - name: " + user_name + ", email: " + user_email, 365);
-
-            fetch("/tracker/api/index/1", {
-                method: "post",
-                body: data
-            })
-                .then(function (res) {
-                    return res.json();
-                })
-
-
-        }
+    // else if ((event.target.classList[1] === "wpcf7-submit" &&
+    //     document.getElementsByName('your-name')[0].value != "") &&
+    //     document.getElementsByName('your-email')[0].value != "") {
+    //
+    //         var data = new FormData();
+    //
+    //         user_name = document.getElementsByName('your-name')[0].value;
+    //         user_email = document.getElementsByName('your-email')[0].value;
+    //
+    //         data.append("email", user_email);
+    //         data.append("name", user_name);
+    //
+    //         setCookie('buzz_cookie', user_id + " - name: " + user_name + ", email: " + user_email, 365);
+    //
+    //         fetch("/tracker/api/index/1", {
+    //             method: "post",
+    //             body: data
+    //         })
+    //             .then(function (res) {
+    //                 return res.json();
+    //             })
+    //
+    //
+    //     }
 
     // if the user clicks all other elements of the page:
     else {
