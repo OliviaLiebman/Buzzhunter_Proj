@@ -166,6 +166,22 @@ function setCookie(cname, cvalue, exdays) {
 //     }
 // })();
 
+// if user submits the form with both their name and email:
+
+ document.getElementsByClassName('wpcf7-submit')[0].addEventListener('click', function() {
+
+        if ((document.getElementsByName('your-name')[0].value != "") &&
+        document.getElementsByName('your-email')[0].value != "") {
+
+            user_name = document.getElementsByName('your-name')[0].value;
+            user_email = document.getElementsByName('your-email')[0].value;
+
+            setCookie('buzz_cookie', user_id + " - name: " + user_name + ", email: " + user_email, 365);
+
+        }
+        return user_name, user_email;
+});
+
 var session_value = amt();
 
 /**********************************************************************************************/
@@ -173,19 +189,23 @@ var session_value = amt();
 function tableOneData() {
 
     if (document.body.scrollHeight > document.body.clientHeight) {
+
         var data = new FormData();
+
         data.append("user_id", user_id);
-        // data.append("name", user_name);
-        // data.append("email", user_email);
+        data.append("user_name", user_name);
+        data.append("user_email", user_email);
         data.append("overall_time", TimeMe.getTimeOnCurrentPageInSeconds()+'s');
         data.append('session_id', session_value);
         data.append('percentage_scroll', output.innerText);
 
     } else {
+
         var data = new FormData();
+
         data.append("user_id", user_id);
-        // data.append("name", user_name);
-        // data.append("email", user_email);
+        data.append("user_name", user_name);
+        data.append("user_email", user_email);
         data.append("overall_time", TimeMe.getTimeOnCurrentPageInSeconds() + 's');
         data.append('session_id', session_value);
         data.append('percentage_scroll', "No scroll ability");
@@ -202,35 +222,6 @@ function tableOneData() {
             })
 
 }
-
-// if user submits the form with both their name and email:
-
- document.getElementsByClassName('wpcf7-submit')[0].addEventListener('click', function() {
-
-        var data = new FormData();
-
-        if ((document.getElementsByName('your-name')[0].value != "") &&
-        document.getElementsByName('your-email')[0].value != "") {
-
-            console.log ("inside if statement when submit is clicked");
-
-
-            user_name = document.getElementsByName('your-name')[0].value;
-            user_email = document.getElementsByName('your-email')[0].value;
-
-            data.append("user_name", user_email);
-            data.append("user_email", user_name);
-
-
-            fetch("/tracker/api/index/1", {
-                method: "post",
-                body: data
-            })
-                .then(function (res) {
-                    return res.json();
-                })
-        }
-});
 
 /**********************************************************************************************/
 
@@ -302,7 +293,6 @@ document.addEventListener('click', function(event) { //add a click event listene
 });
 
 
-
 //     TimeMe.callAfterTimeElapsedInSeconds(1, function(){
 //     console.log("The user has been using the page for 1 second. Let's prompt them with something.");
 //     });
@@ -323,4 +313,3 @@ document.addEventListener('click', function(event) { //add a click event listene
 //     var timeSpentOnPage = TimeMe.getTimeOnCurrentPageInSeconds();
 //     xmlhttp.send(timeSpentOnPage);
 // };
-
