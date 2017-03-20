@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import itc_user_interaction, page_interaction
+from .models import itc_user_interaction, page_interaction, heatmap
 
 class user_interactionSerializer(serializers.ModelSerializer):
     class Meta:
@@ -11,5 +11,13 @@ class page_interactionSerializer(serializers.ModelSerializer):
     class Meta:
         model = page_interaction
         fields= ('user_id', 'session_id', 'current_page', 'buttons_clicked', 'coordinates')
+
+
+
+class heatmapSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = heatmap
+        fields= ('x_coordinate', 'y_coordinate', 'current_page')
 
 

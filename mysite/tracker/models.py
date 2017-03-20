@@ -17,3 +17,9 @@ class page_interaction (models.Model):
     current_page = models.CharField(max_length=1000)
     buttons_clicked = models.TextField(default=False, blank=True)
     coordinates = models.CharField(max_length=25)
+
+class heatmap(models.Model):
+    x_coordinate = models.IntegerField(default= 1)
+    y_coordinate = models.IntegerField(default= 1)
+    current_page = models.CharField(max_length=1000, default="unknown")
+

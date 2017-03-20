@@ -1,6 +1,6 @@
 from django.http import HttpResponse
-from .models import itc_user_interaction, page_interaction
-from .serializers import user_interactionSerializer, page_interactionSerializer
+from .models import itc_user_interaction, page_interaction, heatmap
+from .serializers import user_interactionSerializer, page_interactionSerializer, heatmapSerializer
 from rest_framework import viewsets
 from django.views.generic.edit import UpdateView
 from django.shortcuts import render
@@ -51,6 +51,26 @@ class page_interactionViewSet(viewsets.ModelViewSet):
     serializer_class = page_interactionSerializer
 
 
+class ApiIndexView3(APIView):
+    permission_classes = (permissions.AllowAny,)
+
+    def post(self, request, format=None):
+        serializer = heatmapSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def get(self, request, format=None):
+        itc_tables = heatmap.objects.all()
+        serializer = heatmapSerializer(itc_tables, many=True)
+        return Response(serializer.data)
+
+
+class heatmapViewSet(viewsets.ModelViewSet):
+    queryset = heatmap.objects.all()
+    serializer_class = heatmapSerializer
+
 def index(request):
     return render(request,'index.html')
 
@@ -75,3 +95,5 @@ def website(request):
 def dashboard(request):
     return render(request,'dashboard.html')
 
+def heatmap_website(request):
+    return render(request,'heatmap_website.html')

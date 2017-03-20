@@ -1,7 +1,6 @@
 /**
  * Created by olivialiebman on 3/13/17.
  */
-console.log('i am in dashboard js');
 
   function createUserInteractionTable(data) {
 
@@ -35,7 +34,7 @@ console.log('i am in dashboard js');
                 { "data": "user_id" },
                 { "data": "session_id" },
                 { "data": "current_page" },
-                { "data": "buttons_clicked" },
+                { "data": "buttons_clicked".substr(0, 150) },
                 { "data": "coordinates" }
                  ]
         });

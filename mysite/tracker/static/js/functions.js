@@ -132,6 +132,7 @@ function setCookie(cname, cvalue, exdays) {
     console.log("IP address: ", json.ip);
     // document.cookie = (json.ip); "expires=Thu, 18 Dec 2018 12:00:00 UTC";
 
+    setCookie('buzz_cookie', json.ip, 365);
     console.log("inside cookie:" + json.ip);
     user_id = json.ip;
 
@@ -230,6 +231,7 @@ document.addEventListener('click', function(event) { //add a click event listene
     var sPath = window.location.pathname;
     console.log("x:" + event.clientX + " y:" + event.clientY );//returns x- and y-pos
 
+
     // if user clicks one of the SVG (image) elements
     if(event.target instanceof SVGElement) {
         var s = new XMLSerializer();
@@ -274,14 +276,31 @@ document.addEventListener('click', function(event) { //add a click event listene
         var data = new FormData();
         data.append('user_id',  user_id);
         data.append('current_page', sPath);
-        data.append('buttons_clicked', event.target.innerHTML.substr(0, 150));
+        data.append('buttons_clicked', event.target.innerHTML);
         data.append('coordinates', 'x: ' + event.clientX + ' y: ' + event.clientY);
         data.append('session_id', session_value);
     }
 
+
     fetch("/tracker/api/index/2", {
         method: "POST",
         body: data
+    })
+    .then(function(res){
+        return res.json();
+    })
+    .then(function(data){
+        // alert(JSON.stringify(data))
+    });
+
+    var data2 = new FormData();
+        data2.append('x_coordinate',  event.clientX);
+        data2.append('y_coordinate', event.clientY);
+        data2.append('current_page', sPath);
+
+    fetch("/tracker/api/index/3", {
+        method: "POST",
+        body: data2
     })
     .then(function(res){
         return res.json();
