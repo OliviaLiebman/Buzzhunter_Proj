@@ -8,7 +8,6 @@ window.onunload = tableOneData;
 var user_id = "";
 var user_name = "";
 var user_email = "";
-
 // the following section of code is for scrolling data
 
 var output = document.createElement("p");
@@ -31,7 +30,7 @@ var output = document.createElement("p");
             var docheight = getDocHeight();
             var scrollTop = window.pageYOffset || (document.documentElement || document.body.parentNode || document.body).scrollTop;
             var trackLength = docheight - winheight;
-            var pctScrolled = Math.floor(scrollTop/trackLength * 100) // gets percentage scrolled (ie: 80 or NaN if tracklength == 0)
+            var pctScrolled = Math.floor(scrollTop/trackLength * 100); // gets percentage scrolled (ie: 80 or NaN if tracklength == 0)
             output.innerHTML = pctScrolled +'%'
         }
 
@@ -102,6 +101,20 @@ function getCookieVal(offset) { //Rivka: what does this do? Check the value of t
     return unescape(document.cookie.substring(offset, endstr));
 }
 
+// var url='127.0.0.1:8500'; //change the port to whichever port is being used for runserver, default is 8000
+
+// if (event.target.id == 'welcome'){
+//         var a = document.getElementById('menu-item-75').getElementsByTagName('a')[0];  //will get the href of what is attached to this id
+//         var link = '127.0.0.1:8500/tracker/portfolio/';
+//         // a.href = link;
+//         // window.location.href = '127.0.0.1:8500/tracker/portfolio/';
+//         console.log(link);
+//         console.log(a);
+//         alert("buzz clicked with id = " + event.target.id);
+//         // window.location.href='127.0.0.1:9000/tracker/portfolio/';
+//    }
+//
+
 /**********************************************************************************************/
 
 // the following section of code sets, gets, and returns cookie values:
@@ -117,7 +130,6 @@ function setCookie(cname, cvalue, exdays) {
   function getIP(json) {
     console.log("IP address: ", json.ip);
     // document.cookie = (json.ip); "expires=Thu, 18 Dec 2018 12:00:00 UTC";
-
     setCookie('buzz_cookie', json.ip, 365);
     console.log("inside cookie:" + json.ip);
     user_id = json.ip;
@@ -155,10 +167,11 @@ function setCookie(cname, cvalue, exdays) {
 
 // if user submits the form with both their name and email:
 
- document.getElementsByClassName('wpcf7-submit')[0].addEventListener('click', function() {
+if (document.getElementsByClassName('wpcf7-submit')[0]) {
+    document.getElementsByClassName('wpcf7-submit')[0].addEventListener('click', function () {
 
         if ((document.getElementsByName('your-name')[0].value != "") &&
-        document.getElementsByName('your-email')[0].value != "") {
+            document.getElementsByName('your-email')[0].value != "") {
 
             user_name = document.getElementsByName('your-name')[0].value;
             user_email = document.getElementsByName('your-email')[0].value;
@@ -167,16 +180,14 @@ function setCookie(cname, cvalue, exdays) {
 
         }
         return user_name, user_email;
-});
-
+    });
+}
 var session_value = amt();
 
 /**********************************************************************************************/
 
 function tableOneData() {
-
     if (document.body.scrollHeight > document.body.clientHeight) {
-
         var data = new FormData();
 
         data.append("user_id", user_id);
@@ -215,7 +226,11 @@ function tableOneData() {
 
 document.addEventListener('click', function(event) { //add a click event listener on the whole doc
     var sPath = window.location.pathname;
-
+    var xOffset=Math.max(document.documentElement.scrollLeft,document.body.scrollLeft);
+    var yOffset=Math.max(document.documentElement.scrollTop,document.body.scrollTop);
+    var X = event.clientX+xOffset;
+    var Y = Math.round(event.clientY+yOffset);
+    console.log('x: ' + X + ' y: ' + Y);
     // if user clicks one of the SVG (image) elements
     if(event.target instanceof SVGElement) {
         var s = new XMLSerializer();
@@ -225,23 +240,19 @@ document.addEventListener('click', function(event) { //add a click event listene
         data.append('user_id',  user_id);
         data.append('current_page', sPath);
         data.append('buttons_clicked', str);
-        data.append('coordinates', 'x: ' + event.clientX + ' y: ' + event.clientY);
+        data.append('coordinates', 'x: ' + X + ' y: ' + Y);
         data.append('session_id', session_value);
     }
 
     else {
-            console.log('"' + event.target.outerHTML.substr(0, 150) + '"');
-
         var data = new FormData();
         data.append('user_id',  user_id);
         data.append('current_page', sPath);
-        data.append('buttons_clicked', '"' + event.target.outerHTML.substr(0, 300) + '"');
-        data.append('coordinates', 'x: ' + event.clientX + ' y: ' + event.clientY);
+        data.append('buttons_clicked', '"' + event.target.outerHTML.substr(0, 150) + '"');
+        data.append('coordinates', 'x: ' + X + ' y: ' + Y);
         data.append('session_id', session_value);
 
     }
-
-
 
 
     fetch("/tracker/api/index/2", {
@@ -256,8 +267,8 @@ document.addEventListener('click', function(event) { //add a click event listene
     });
 
     var data2 = new FormData();
-        data2.append('x_coordinate',  event.clientX);
-        data2.append('y_coordinate', event.clientY);
+        data2.append('x_coordinate',  X);
+        data2.append('y_coordinate', Y);
         data2.append('current_page', sPath);
 
     fetch("/tracker/api/index/3", {
@@ -272,3 +283,26 @@ document.addEventListener('click', function(event) { //add a click event listene
     });
 
 });
+
+
+//     TimeMe.callAfterTimeElapsedInSeconds(1, function(){
+//     console.log("The user has been using the page for 1 second. Let's prompt them with something.");
+//     });
+//
+//     TimeMe.callWhenUserLeaves(function(){
+//     console.log("The user is not currently viewing the page!");
+// }, 5);
+//
+// // Executes every time a user returns
+// TimeMe.callWhenUserReturns(function(){
+//     console.log("The user has come back!");
+// });
+//
+// window.onbeforeunload = function (event) {
+//     xmlhttp=new XMLHttpRequest();
+//     xmlhttp.open("POST","ENTER_URL_HERE", true);
+//     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+//     var timeSpentOnPage = TimeMe.getTimeOnCurrentPageInSeconds();
+//     xmlhttp.send(timeSpentOnPage);
+// };
+
