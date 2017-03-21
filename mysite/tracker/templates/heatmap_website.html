@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>heatmap</title>
+    <style>
+      body, html {margin:0; padding:0; height:100%;}
+      body { font-family:sans-serif; }
+      body * { font-weight:200;}
+      #heatmapContainerWrapper { width:100%; height:2500px; position:absolute;}
+      #heatmapContainer { width:100%; height:100%;}
+      </style>
+
+</head>
+<body>
+
+    <div id="heatmapContainerWrapper" class="display" cellspacing="0" width="100%">
+        <div id="heatmapContainer" class="display" cellspacing="0" width="100%">
+        </div>
+    </div>
+    {% csrf_token %}
+    {% load staticfiles %}
+    <script src="{% static 'js/heatmap.js' %}" ></script>
+    <script src="{% static 'js/heatmap_portfolio.js' %}" ></script>
+
+</body>
+</html>
