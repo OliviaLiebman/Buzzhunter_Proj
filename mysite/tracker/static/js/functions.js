@@ -82,9 +82,9 @@ var exp = new Date();
 exp.setTime(exp.getTime() + (expDays*24*60*60*1000));
 
 function amt(){ //keeps track of session ID per user
-    var count = GetCookieSession('count')
+    var count = GetCookieSession('count');
     if(count == null) {
-        SetCookieSessions('count','1')
+        SetCookieSessions('count','1');
         return 1
     }
     else {
@@ -132,6 +132,7 @@ function setCookie(cname, cvalue, exdays) {
     console.log("IP address: ", json.ip);
     // document.cookie = (json.ip); "expires=Thu, 18 Dec 2018 12:00:00 UTC";
 
+    setCookie('buzz_cookie', json.ip, 365);
     console.log("inside cookie:" + json.ip);
     user_id = json.ip;
 
@@ -228,7 +229,6 @@ function tableOneData() {
 
 document.addEventListener('click', function(event) { //add a click event listener on the whole doc
     var sPath = window.location.pathname;
-    console.log("x:" + event.clientX + " y:" + event.clientY );//returns x- and y-pos
 
     // if user clicks one of the SVG (image) elements
     if(event.target instanceof SVGElement) {
@@ -238,7 +238,7 @@ document.addEventListener('click', function(event) { //add a click event listene
         var data = new FormData();
         data.append('user_id',  user_id);
         data.append('current_page', sPath);
-        data.append('buttons_clicked', str.substr(5, 150));
+        data.append('buttons_clicked', str);
         data.append('coordinates', 'x: ' + event.clientX + ' y: ' + event.clientY);
         data.append('session_id', session_value);
     }
@@ -270,18 +270,48 @@ document.addEventListener('click', function(event) { //add a click event listene
     //     }
 
     // if the user clicks all other elements of the page:
+    // else if (event.target.tagName == 'DIV' ){
+    //     var data = new FormData();
+    //     data.append('user_id',  user_id);
+    //     data.append('current_page', sPath);
+    //     data.append('buttons_clicked', "div");
+    //     data.append('coordinates', 'x: ' + event.clientX + ' y: ' + event.clientY);
+    //     data.append('session_id', session_value);
+    // }
     else {
+            console.log('"' + event.target.outerHTML.substr(0, 150) + '"');
+
         var data = new FormData();
         data.append('user_id',  user_id);
         data.append('current_page', sPath);
-        data.append('buttons_clicked', event.target.innerHTML.substr(0, 150));
+        data.append('buttons_clicked', '"' + event.target.outerHTML.substr(0, 150) + '"');
         data.append('coordinates', 'x: ' + event.clientX + ' y: ' + event.clientY);
         data.append('session_id', session_value);
+
     }
+
+
+
 
     fetch("/tracker/api/index/2", {
         method: "POST",
         body: data
+    })
+    .then(function(res){
+        return res.json();
+    })
+    .then(function(data){
+        // alert(JSON.stringify(data))
+    });
+
+    var data2 = new FormData();
+        data2.append('x_coordinate',  event.clientX);
+        data2.append('y_coordinate', event.clientY);
+        data2.append('current_page', sPath);
+
+    fetch("/tracker/api/index/3", {
+        method: "POST",
+        body: data2
     })
     .then(function(res){
         return res.json();
