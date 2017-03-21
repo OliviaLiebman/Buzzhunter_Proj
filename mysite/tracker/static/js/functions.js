@@ -102,20 +102,6 @@ function getCookieVal(offset) { //Rivka: what does this do? Check the value of t
     return unescape(document.cookie.substring(offset, endstr));
 }
 
-// var url='127.0.0.1:8500'; //change the port to whichever port is being used for runserver, default is 8000
-
-// if (event.target.id == 'welcome'){
-//         var a = document.getElementById('menu-item-75').getElementsByTagName('a')[0];  //will get the href of what is attached to this id
-//         var link = '127.0.0.1:8500/tracker/portfolio/';
-//         // a.href = link;
-//         // window.location.href = '127.0.0.1:8500/tracker/portfolio/';
-//         console.log(link);
-//         console.log(a);
-//         alert("buzz clicked with id = " + event.target.id);
-//         // window.location.href='127.0.0.1:9000/tracker/portfolio/';
-//    }
-//
-
 /**********************************************************************************************/
 
 // the following section of code sets, gets, and returns cookie values:
@@ -243,48 +229,13 @@ document.addEventListener('click', function(event) { //add a click event listene
         data.append('session_id', session_value);
     }
 
-    // gets user's name a and email if they click submit on the form:
-    // else if ((event.target.classList[1] === "wpcf7-submit" &&
-    //     document.getElementsByName('your-name')[0].value != "") &&
-    //     document.getElementsByName('your-email')[0].value != "") {
-    //
-    //         var data = new FormData();
-    //
-    //         user_name = document.getElementsByName('your-name')[0].value;
-    //         user_email = document.getElementsByName('your-email')[0].value;
-    //
-    //         data.append("email", user_email);
-    //         data.append("name", user_name);
-    //
-    //         setCookie('buzz_cookie', user_id + " - name: " + user_name + ", email: " + user_email, 365);
-    //
-    //         fetch("/tracker/api/index/1", {
-    //             method: "post",
-    //             body: data
-    //         })
-    //             .then(function (res) {
-    //                 return res.json();
-    //             })
-    //
-    //
-    //     }
-
-    // if the user clicks all other elements of the page:
-    // else if (event.target.tagName == 'DIV' ){
-    //     var data = new FormData();
-    //     data.append('user_id',  user_id);
-    //     data.append('current_page', sPath);
-    //     data.append('buttons_clicked', "div");
-    //     data.append('coordinates', 'x: ' + event.clientX + ' y: ' + event.clientY);
-    //     data.append('session_id', session_value);
-    // }
     else {
             console.log('"' + event.target.outerHTML.substr(0, 150) + '"');
 
         var data = new FormData();
         data.append('user_id',  user_id);
         data.append('current_page', sPath);
-        data.append('buttons_clicked', '"' + event.target.outerHTML.substr(0, 150) + '"');
+        data.append('buttons_clicked', '"' + event.target.outerHTML.substr(0, 300) + '"');
         data.append('coordinates', 'x: ' + event.clientX + ' y: ' + event.clientY);
         data.append('session_id', session_value);
 
@@ -321,25 +272,3 @@ document.addEventListener('click', function(event) { //add a click event listene
     });
 
 });
-
-
-//     TimeMe.callAfterTimeElapsedInSeconds(1, function(){
-//     console.log("The user has been using the page for 1 second. Let's prompt them with something.");
-//     });
-//
-//     TimeMe.callWhenUserLeaves(function(){
-//     console.log("The user is not currently viewing the page!");
-// }, 5);
-//
-// // Executes every time a user returns
-// TimeMe.callWhenUserReturns(function(){
-//     console.log("The user has come back!");
-// });
-//
-// window.onbeforeunload = function (event) {
-//     xmlhttp=new XMLHttpRequest();
-//     xmlhttp.open("POST","ENTER_URL_HERE", true);
-//     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-//     var timeSpentOnPage = TimeMe.getTimeOnCurrentPageInSeconds();
-//     xmlhttp.send(timeSpentOnPage);
-// };

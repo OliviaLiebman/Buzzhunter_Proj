@@ -34,7 +34,7 @@
                 { "data": "user_id" },
                 { "data": "session_id" },
                 { "data": "current_page" },
-                { "data": "buttons_clicked".substr(0, 150) },
+                { "data": "buttons_clicked".substr(0, 250) },
                 { "data": "coordinates" }
                  ]
         });

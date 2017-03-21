@@ -16,8 +16,6 @@ urlpatterns = [
     url(r'^api/index/3', views.ApiIndexView3.as_view()),
 
     url(r'^api/', include(router.urls)),
-   # url(r'^api$', include(router.urls)), changed to above line
-
     url(r'^website/', views.website, name='website'),
     url(r'^portfolio/', views.portfolio, name='portfolio'),
     url(r'^index/', views.index, name='index'),
