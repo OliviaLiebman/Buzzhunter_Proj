@@ -119,6 +119,22 @@ function getCookieVal(offset) { //Rivka: what does this do? Check the value of t
 
 // the following section of code sets, gets, and returns cookie values:
 
+if ( window.location.pathname === "/tracker/portfolio/" || window.location.pathname === "/tracker/website/") {
+    document.getElementsByClassName('wpcf7-submit')[0].addEventListener('click', function () {
+
+        if ((document.getElementsByName('your-name')[0].value != "") &&
+            document.getElementsByName('your-email')[0].value != "") {
+
+            user_name = document.getElementsByName('your-name')[0].value;
+            user_email = document.getElementsByName('your-email')[0].value;
+
+            setCookie('buzz_cookie', user_id + " - name: " + user_name + ", email: " + user_email, 365);
+
+        }
+        return user_name, user_email;
+    });
+}
+
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
@@ -167,21 +183,6 @@ function setCookie(cname, cvalue, exdays) {
 
 // if user submits the form with both their name and email:
 
-if (document.getElementsByClassName('wpcf7-submit')[0]) {
-    document.getElementsByClassName('wpcf7-submit')[0].addEventListener('click', function () {
-
-        if ((document.getElementsByName('your-name')[0].value != "") &&
-            document.getElementsByName('your-email')[0].value != "") {
-
-            user_name = document.getElementsByName('your-name')[0].value;
-            user_email = document.getElementsByName('your-email')[0].value;
-
-            setCookie('buzz_cookie', user_id + " - name: " + user_name + ", email: " + user_email, 365);
-
-        }
-        return user_name, user_email;
-    });
-}
 var session_value = amt();
 
 /**********************************************************************************************/

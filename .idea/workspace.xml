@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9a7f321f-091f-4712-bda7-f6f8e25c8e1e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mysite/tracker/models.py" afterPath="$PROJECT_DIR$/mysite/tracker/models.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mysite/tracker/static/js/functions.js" afterPath="$PROJECT_DIR$/mysite/tracker/static/js/functions.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mysite/tracker/templates/buzzLove.html" afterPath="$PROJECT_DIR$/mysite/tracker/templates/buzzLove.html" />
     </list>
@@ -29,8 +28,8 @@
       <file leaf-file-name="functions.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mysite/tracker/static/js/functions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1126">
-              <caret line="184" column="19" lean-forward="false" selection-start-line="184" selection-start-column="19" selection-end-line="184" selection-end-column="19" />
+            <state relative-caret-position="1185">
+              <caret line="145" column="24" lean-forward="true" selection-start-line="145" selection-start-column="24" selection-end-line="145" selection-end-column="24" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -38,11 +37,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="buzzLove.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="portfolio.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mysite/tracker/templates/portfolio.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="146">
+              <caret line="763" column="617" lean-forward="false" selection-start-line="763" selection-start-column="612" selection-end-line="763" selection-end-column="617" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="buzzLove.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mysite/tracker/templates/buzzLove.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="48">
-              <caret line="475" column="0" lean-forward="true" selection-start-line="475" selection-start-column="0" selection-end-line="475" selection-end-column="0" />
+            <state relative-caret-position="18">
+              <caret line="492" column="0" lean-forward="true" selection-start-line="492" selection-start-column="0" selection-end-line="492" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mysite/tracker/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="32" column="29" lean-forward="true" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -56,6 +75,26 @@
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="heatmap_website.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/mysite/tracker/templates/heatmap_website.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" column="51" lean-forward="true" selection-start-line="11" selection-start-column="51" selection-end-line="11" selection-end-column="51" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="heatmap_portfolio.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mysite/tracker/static/js/heatmap_portfolio.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="271">
+              <caret line="21" column="29" lean-forward="true" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -75,8 +114,8 @@
       <file leaf-file-name="website.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mysite/tracker/templates/website.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="9212" column="11" lean-forward="false" selection-start-line="9212" selection-start-column="11" selection-end-line="9212" selection-end-column="11" />
+            <state relative-caret-position="123">
+              <caret line="9217" column="0" lean-forward="false" selection-start-line="9217" selection-start-column="0" selection-end-line="9220" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -95,7 +134,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>count</find>
       <find>alen</find>
       <find>clen</find>
       <find>setcookie</find>
@@ -124,6 +162,7 @@
       <find>style</find>
       <find>width</find>
       <find>functions</find>
+      <find>ipify</find>
       <find>fun</find>
     </findStrings>
   </component>
@@ -152,10 +191,10 @@
         <option value="$PROJECT_DIR$/mysite/mysite/settings.py" />
         <option value="$PROJECT_DIR$/mysite/tracker/static/js/heatmap_website.js" />
         <option value="$PROJECT_DIR$/mysite/tracker/static/js/heatmap_portfolio.js" />
-        <option value="$PROJECT_DIR$/mysite/tracker/templates/heatmap_website.html" />
         <option value="$PROJECT_DIR$/mysite/tracker/models.py" />
         <option value="$PROJECT_DIR$/mysite/tracker/static/js/functions.js" />
         <option value="$PROJECT_DIR$/mysite/tracker/templates/buzzLove.html" />
+        <option value="$PROJECT_DIR$/mysite/tracker/templates/heatmap_website.html" />
       </list>
     </option>
   </component>
@@ -797,7 +836,14 @@
       <option name="project" value="LOCAL" />
       <updated>1490085537464</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="adding functions to other pages">
+      <created>1490089726491</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1490089726491</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -856,7 +902,8 @@
     <MESSAGE value="changed format of strings for datatables" />
     <MESSAGE value="created heatmap" />
     <MESSAGE value="heatmap for portfolio page completed" />
-    <option name="LAST_COMMIT_MESSAGE" value="heatmap for portfolio page completed" />
+    <MESSAGE value="adding functions to other pages" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding functions to other pages" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1050,14 +1097,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mysite/tracker/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="98" column="42" lean-forward="false" selection-start-line="98" selection-start-column="42" selection-end-line="98" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mysite/tracker/templates/dashboard.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-510">
@@ -1115,26 +1154,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mysite/tracker/templates/heatmap_website.html">
+    <entry file="file://$PROJECT_DIR$/mysite/tracker/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="44" lean-forward="true" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
+        <state relative-caret-position="210">
+          <caret line="14" column="62" lean-forward="false" selection-start-line="14" selection-start-column="62" selection-end-line="14" selection-end-column="62" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mysite/tracker/static/js/functions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1185">
+          <caret line="145" column="24" lean-forward="true" selection-start-line="145" selection-start-column="24" selection-end-line="145" selection-end-column="24" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mysite/tracker/templates/website.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="9217" column="0" lean-forward="false" selection-start-line="9217" selection-start-column="0" selection-end-line="9220" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mysite/tracker/static/js/heatmap_portfolio.js">
+    <entry file="file://$PROJECT_DIR$/mysite/tracker/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="38" column="22" lean-forward="false" selection-start-line="38" selection-start-column="22" selection-end-line="38" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mysite/tracker/templates/portfolio.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="763" column="617" lean-forward="false" selection-start-line="763" selection-start-column="612" selection-end-line="763" selection-end-column="617" />
+        <state relative-caret-position="345">
+          <caret line="32" column="29" lean-forward="true" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="29" />
           <folding />
         </state>
       </provider>
@@ -1149,38 +1200,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mysite/tracker/models.py">
+    <entry file="file://$PROJECT_DIR$/mysite/tracker/templates/portfolio.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="62" lean-forward="false" selection-start-line="14" selection-start-column="62" selection-end-line="14" selection-end-column="62" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mysite/tracker/static/js/functions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1126">
-          <caret line="184" column="19" lean-forward="false" selection-start-line="184" selection-start-column="19" selection-end-line="184" selection-end-column="19" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mysite/tracker/templates/website.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="9212" column="11" lean-forward="false" selection-start-line="9212" selection-start-column="11" selection-end-line="9212" selection-end-column="11" />
+        <state relative-caret-position="146">
+          <caret line="763" column="617" lean-forward="false" selection-start-line="763" selection-start-column="612" selection-end-line="763" selection-end-column="617" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mysite/tracker/templates/buzzLove.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="475" column="0" lean-forward="true" selection-start-line="475" selection-start-column="0" selection-end-line="475" selection-end-column="0" />
+        <state relative-caret-position="18">
+          <caret line="492" column="0" lean-forward="true" selection-start-line="492" selection-start-column="0" selection-end-line="492" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mysite/tracker/static/js/heatmap_portfolio.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="21" column="29" lean-forward="true" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mysite/tracker/templates/heatmap_website.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="51" lean-forward="true" selection-start-line="11" selection-start-column="51" selection-end-line="11" selection-end-column="51" />
           <folding />
         </state>
       </provider>
