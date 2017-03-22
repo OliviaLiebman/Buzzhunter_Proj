@@ -1,13 +1,8 @@
-// var Tracker = {};
-//
-// Tracker.start = (function () {
-//
-// // })();
-
 window.onunload = tableOneData;
 var user_id = "";
 var user_name = "";
 var user_email = "";
+
 // the following section of code is for scrolling data
 
 var output = document.createElement("p");
@@ -101,19 +96,6 @@ function getCookieVal(offset) { //Rivka: what does this do? Check the value of t
     return unescape(document.cookie.substring(offset, endstr));
 }
 
-// var url='127.0.0.1:8500'; //change the port to whichever port is being used for runserver, default is 8000
-
-// if (event.target.id == 'welcome'){
-//         var a = document.getElementById('menu-item-75').getElementsByTagName('a')[0];  //will get the href of what is attached to this id
-//         var link = '127.0.0.1:8500/tracker/portfolio/';
-//         // a.href = link;
-//         // window.location.href = '127.0.0.1:8500/tracker/portfolio/';
-//         console.log(link);
-//         console.log(a);
-//         alert("buzz clicked with id = " + event.target.id);
-//         // window.location.href='127.0.0.1:9000/tracker/portfolio/';
-//    }
-//
 
 /**********************************************************************************************/
 
@@ -168,18 +150,6 @@ function setCookie(cname, cvalue, exdays) {
     return "";
 
     }
-
-// (function checkCookie() {
-//     var user = getCookie("username");
-//     if (user != "") {
-//         alert("Welcome again " + user);
-//     } else {
-//         user = prompt("Please enter your name:", "");
-//         if (user != "" && user != null) {
-//             setCookie("username", user, 365);
-//         }
-//     }
-// })();
 
 // if user submits the form with both their name and email:
 
@@ -284,26 +254,3 @@ document.addEventListener('click', function(event) { //add a click event listene
     });
 
 });
-
-
-//     TimeMe.callAfterTimeElapsedInSeconds(1, function(){
-//     console.log("The user has been using the page for 1 second. Let's prompt them with something.");
-//     });
-//
-//     TimeMe.callWhenUserLeaves(function(){
-//     console.log("The user is not currently viewing the page!");
-// }, 5);
-//
-// // Executes every time a user returns
-// TimeMe.callWhenUserReturns(function(){
-//     console.log("The user has come back!");
-// });
-//
-// window.onbeforeunload = function (event) {
-//     xmlhttp=new XMLHttpRequest();
-//     xmlhttp.open("POST","ENTER_URL_HERE", true);
-//     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-//     var timeSpentOnPage = TimeMe.getTimeOnCurrentPageInSeconds();
-//     xmlhttp.send(timeSpentOnPage);
-// };
-
